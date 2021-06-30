@@ -28,9 +28,9 @@ public class Home{
 	private Shooppingrepository shopRepo;
 
 	@PostMapping("/api/users/sigin")
-	public Usermodel login(@RequestBody String username, @RequestBody String pwd) {
+	public Usermodel login(@RequestBody User userinput) {
 		 
-		User users = userRepo.findByUsernameAndPassword(username,pwd);
+		User users = userRepo.findByUsernameAndPassword(userinput.getUsername(),userinput.getPassword());
 		String token = getJWTToken(users.getUsername());
 		Usermodel user = new Usermodel();
 		user.setUsername(users.getUsername());
