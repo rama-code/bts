@@ -80,7 +80,7 @@ public class Home{
 		
 	}
 	@PutMapping("/api/shoopping/{id}")
-	public Shoopping update(@PathVariable long id) {
+	public Shoopping update(@RequestBody Shoopping shop,@PathVariable long id) {
 		 
 		Shoopping shopi = shopRepo.findById(id);
 		shop.setId(shopi.getId());
@@ -89,7 +89,7 @@ public class Home{
 	}
 
 	@DeleteMapping("/api/shoopping/{id}")
-	public void deleteById(@RequestBody Shoopping shop,@PathVariable long id ) {
+	public void deleteById(@PathVariable long id ) {
 		
 			
 		shopRepo.deleteById(id);
